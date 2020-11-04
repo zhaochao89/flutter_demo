@@ -1,7 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:hello_world/signature_page.dart';
 import 'package:hello_world/test_isolate.dart';
 import 'package:hello_world/test_network_page.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -25,6 +28,12 @@ class _HomePageState extends State<HomePage>
     // TODO: implement initState
     super.initState();
     print('HomePage initState');
+    //异步返回的future，在future的then中才能真正得到可用数据
+    getJSON().then((value) => print(value));
+  }
+
+  Future<String> getJSON() async {
+    return await rootBundle.loadString('asserts/lmAppUpdate_gongyouyun.json');
   }
 
   @override
@@ -41,7 +50,8 @@ class _HomePageState extends State<HomePage>
                     contentPadding: EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
                     onTap: () {
                       var page = _list[index]['page'];
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) => page));
                     },
                   ),
                   Divider()

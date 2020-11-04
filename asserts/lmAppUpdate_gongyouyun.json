@@ -1,0 +1,26 @@
+[
+  {
+    "id": "00006",
+    "platformName": "公有云",
+    "android": {
+      "version_name": "v3.1.45",
+      "version_number": 45,
+      "version_description": "更新描述",
+      "package_url": "",
+      "min_version": 39,
+      "force_update": false,
+      "total_times": -1,
+      "interval_times": -1
+    },
+    "ios": {
+      "version_name": "v3.1.47",
+      "version_number": 47,
+      "version_description": "更新描述",
+      "package_url": "",
+      "min_version": 39,
+      "force_update": true,
+      "total_times": -1,
+      "interval_times": -1
+    }
+  }
+]
