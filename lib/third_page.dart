@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:hello_world/collection_list_page.dart';
 
 /*
 * Widget和Element是紧密关联着的并且提供给Element某些信息。
@@ -74,7 +75,7 @@ class _RandomWordsState extends State<RandomWords> with AutomaticKeepAliveClient
     // Navigator.push(context, MaterialPageRoute(builder: (context){
     //   return SavedPage(savedSuggestions: _saved);
     // }));
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SavedPage(savedSuggestions: _saved)));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CollectionListPage(suggestions: _saved)));
   }
 
   @override
@@ -82,33 +83,12 @@ class _RandomWordsState extends State<RandomWords> with AutomaticKeepAliveClient
     super.build(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('首页'),
+        title: Text('单词列表'),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)
         ],
       ),
       body: _buildSuggestions(),
-    );
-  }
-}
-
-class SavedPage extends StatelessWidget {
-
-  final Set<WordPair> savedSuggestions;
-
-  SavedPage({Key key, @required this.savedSuggestions}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final _tiles = savedSuggestions.map((pair) {
-      return ListTile(
-          title: Text(pair.asPascalCase, style: TextStyle(fontSize: 24.0)));
-    });
-    final divided =
-    ListTile.divideTiles(tiles: _tiles, context: context).toList();
-    return Scaffold(
-      appBar: AppBar(title: Text('收藏')),
-      body: ListView(children: divided),
     );
   }
 }
