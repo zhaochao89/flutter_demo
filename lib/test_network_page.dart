@@ -20,12 +20,16 @@ class _TextNetworkPageState extends State<TestNetworkPage> {
   }
 
   loadData() async {
-    String dataURL = "https://m.topvdn.com/lmAppPlatform_v2.json";
-    http.Response response = await http.get(dataURL);
-    setState(() {
-      Utf8Decoder decode = Utf8Decoder();
-      widgets = json.decode(decode.convert(response.bodyBytes));
-    });
+    String dataURL = "http://192.168.4.10/lmAppPlatform_v2.json";
+    try {
+      http.Response response = await http.get(dataURL);
+      setState(() {
+        Utf8Decoder decode = Utf8Decoder();
+        widgets = json.decode(decode.convert(response.bodyBytes));
+      });
+    } catch (error) {
+      print("请求出错 $error");
+    }
   }
 
   Widget getRow(int i) {
