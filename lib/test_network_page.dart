@@ -14,13 +14,32 @@ class _TextNetworkPageState extends State<TestNetworkPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadData();
   }
 
+  showLoading() {
+    if (widgets.length == 0) {
+      return true;
+    }
+    return false;
+  }
+
+  Widget getBody() {
+    if (showLoading()) {
+      return Center(child: CircularProgressIndicator());
+    } else {
+      return ListView.builder(
+        itemBuilder: (context, index) {
+          return getRow(index);
+        },
+        itemCount: widgets.length,
+      );
+    }
+  }
+
   loadData() async {
-    String dataURL = "http://192.168.4.10/lmAppPlatform_v2.json";
+    String dataURL = "https://m.topvdn.com/lmAppPlatform_v2.json";
     try {
       http.Response response = await http.get(dataURL);
       setState(() {
@@ -42,12 +61,7 @@ class _TextNetworkPageState extends State<TestNetworkPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('网络请求')),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return getRow(index);
-        },
-        itemCount: widgets.length,
-      ),
+      body: getBody()
     );
   }
 }
