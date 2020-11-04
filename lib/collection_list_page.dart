@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/services.dart';
@@ -101,7 +102,8 @@ class _CollectionListPageState extends State<CollectionListPage> {
                     Navigator.of(context).pop(false);
                   },
                   child: Text('取消'),
-                  )
+                  ),
+                  CupertinoButton(child: Text('CupertinoButton'), onPressed: null)
                 ],
               ));
         });
