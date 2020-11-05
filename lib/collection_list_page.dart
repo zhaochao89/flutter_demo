@@ -102,8 +102,7 @@ class _CollectionListPageState extends State<CollectionListPage> {
                     Navigator.of(context).pop(false);
                   },
                   child: Text('取消'),
-                  ),
-                  CupertinoButton(child: Text('CupertinoButton'), onPressed: null)
+                  )
                 ],
               ));
         });

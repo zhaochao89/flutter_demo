@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:hello_world/form-page.dart';
 import 'package:hello_world/signature_page.dart';
 import 'package:hello_world/test_isolate.dart';
 import 'package:hello_world/test_network_page.dart';
@@ -16,7 +16,8 @@ class _HomePageState extends State<HomePage>
   final List<Map<String, dynamic>> _list = [
     {'name': '绘图', 'page': Signature()},
     {'name': '网络请求', 'page': TestNetworkPage()},
-    {'name': 'Isolate的使用', 'page': TestIsonlate()}
+    {'name': 'Isolate的使用', 'page': TestIsonlate()},
+    {'name': '表单', 'page': FormPage()}
   ];
 
   @override
