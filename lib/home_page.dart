@@ -9,6 +9,7 @@ import 'package:hello_world/test_network_page.dart';
 import 'package:flutter/services.dart';
 import 'package:hello_world/test_shared_preferences.dart';
 import 'package:hello_world/test_widget_state.dart';
+import 'package:hello_world/widgets/widget_examples.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin {
   final List<Map<String, dynamic>> _list = [
+    {'name': 'Widgets示例', 'page': ZCWidgetExamplesPage()},
     {'name': '绘图', 'page': Signature()},
     {'name': '网络请求', 'page': TestNetworkPage()},
     {'name': 'Isolate的使用', 'page': TestIsonlate()},
