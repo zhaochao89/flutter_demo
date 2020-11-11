@@ -11,8 +11,8 @@ class _FormPageState extends State<FormPage> {
   var _result = '请提交内容';
   TextEditingController _userNameController;
   var _passwordController = TextEditingController();
-  var _errorUserName = 'ddd';
-  var _errorPassword = '';
+  String _errorUserName;
+  String _errorPassword;
   var _passwordValue = '';
 
   FocusNode _blankNode = FocusNode();
@@ -22,7 +22,7 @@ class _FormPageState extends State<FormPage> {
     super.initState();
     _userNameController = TextEditingController()
       ..addListener(() {
-        print('userName 输入');
+        print('userName 改变');
       });
   }
 
@@ -48,7 +48,7 @@ class _FormPageState extends State<FormPage> {
             border: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.black54)),
             helperText: '用户名长度为6-10个字母',
-            // errorText: _errorUserName
+            errorText: _errorUserName
           ),
           keyboardType: TextInputType.phone,
         )),
@@ -78,7 +78,7 @@ class _FormPageState extends State<FormPage> {
                 icon: Icon(Icons.alarm_rounded),
                 hintText: '请输入密码',
                 helperText: '密码位6-18位数字、字母组合',
-                // errorText: _errorPassword
+                errorText: _errorPassword,
                 counterText: '${_passwordValue.length}/18'),
           ),
         ),
@@ -99,6 +99,7 @@ class _FormPageState extends State<FormPage> {
     return Scaffold(
         appBar: AppBar(title: Text('登录')),
         body: GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: () {
             print('========');
             _dismissKeyboard(context);
@@ -114,6 +115,22 @@ class _FormPageState extends State<FormPage> {
               SizedBox(height: 32.0),
               RaisedButton(
                 onPressed: () {
+                  if (_userNameController.text.length == 0) {
+                    setState(() {
+                      _errorUserName = '请输入用户名';
+                    });
+                    return;
+                  } else {
+                    _errorUserName = null;
+                  }
+                  if (_passwordController.text.length == 0) {
+                    setState(() {
+                      _errorPassword = '请输入密码';
+                    });
+                    return;
+                  } else {
+                    _errorPassword = null;
+                  }
                   _dismissKeyboard(context);
                   var text = '';
                   if (_userNameController.text.length > 0) {

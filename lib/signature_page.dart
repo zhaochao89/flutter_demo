@@ -35,7 +35,20 @@ class SignatureState extends State<Signature> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('绘图')),
+      appBar: AppBar(
+        title: Text('绘图'),
+        leading: Icon(Icons.menu),
+        actions: [
+          SizedBox(
+            child: Icon(Icons.book),
+            width: 44.0,
+          ),
+          SizedBox(
+            child: Icon(Icons.add),
+            width: 44.0,
+          )
+        ],
+      ),
       body: GestureDetector(
         onPanUpdate: (DragUpdateDetails details) {
           setState(() {
