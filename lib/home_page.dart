@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/form-page.dart';
 import 'package:hello_world/image_picker_page.dart';
+import 'package:hello_world/layout/layout_page1.dart';
 import 'package:hello_world/shopping.dart';
 import 'package:hello_world/signature_page.dart';
+import 'package:hello_world/test_httpclient_page.dart';
 import 'package:hello_world/test_image_picker_page.dart';
 import 'package:hello_world/test_isolate.dart';
 import 'package:hello_world/test_network_page.dart';
@@ -28,7 +30,9 @@ class _HomePageState extends State<HomePage>
     {'name': 'ImagePicker', 'page': TestImagePickerPage()},
     {'name': 'shared_preferences', 'page': TestSharedPreferences()},
     {'name': 'Widget-State分离', 'page': Counter()},
-    {'name': '购物车', 'page': ShoppingList(products: [Product(name: '苹果'), Product(name: '橘子'), Product(name: '香蕉'), Product(name: '菠萝'), Product(name: '草莓')])}
+    {'name': '购物车', 'page': ShoppingList(products: [Product(name: '苹果'), Product(name: '橘子'), Product(name: '香蕉'), Product(name: '菠萝'), Product(name: '草莓')])},
+    {'name': '页面布局一', 'page': LayoutPage1()},
+    {'name': 'HttpClient的使用', 'page': TestHttpClientPage()}
   ];
 
   @override

@@ -47,5 +47,10 @@
 	<string>APP需要访问你的相册</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>APP需要访问你的麦克风</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
