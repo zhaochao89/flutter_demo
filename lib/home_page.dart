@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/form-page.dart';
 import 'package:hello_world/image_picker_page.dart';
+import 'package:hello_world/json_serializable/test_json_serializable.dart';
 import 'package:hello_world/layout/layout_page1.dart';
 import 'package:hello_world/shopping.dart';
 import 'package:hello_world/signature_page.dart';
@@ -21,6 +22,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin {
   final List<Map<String, dynamic>> _list = [
+    {'name': 'json_serializable', 'page': TestJsonSeriallizable()},
     {'name': 'Widgets示例', 'page': ZCWidgetExamplesPage()},
     {'name': '绘图', 'page': Signature()},
     {'name': '网络请求', 'page': TestNetworkPage()},
@@ -47,7 +49,12 @@ class _HomePageState extends State<HomePage>
   }
 
   Future<String> getJSON() async {
-    return await rootBundle.loadString('asserts/lmAppUpdate_gongyouyun.json');
+    try {
+      return await rootBundle.loadString('assets/lmAppUpdate_gongyouyun.json');
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
 
   @override

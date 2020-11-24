@@ -40,7 +40,7 @@ class _TestHttpClientPage extends State<TestHttpClientPage> {
       SendPort callbackPort = msg[0];
       try {
         var httpClient = HttpClient();
-        var uri = Uri.parse('');
+        var uri = Uri.parse('https://pub.dev/packages/isolate');
         var request = await httpClient.getUrl(uri);
         var response = await request.close();
         var value = await response.transform(utf8.decoder).join();

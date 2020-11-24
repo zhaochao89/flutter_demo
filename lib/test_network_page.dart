@@ -10,7 +10,7 @@ class TestNetworkPage extends StatefulWidget {
 }
 
 class _TextNetworkPageState extends State<TestNetworkPage> {
-  List widgets = [];
+  Map<String, dynamic> widgets = Map<String, dynamic>();
 
   @override
   void initState() {
@@ -19,6 +19,7 @@ class _TextNetworkPageState extends State<TestNetworkPage> {
   }
 
   showLoading() {
+    //widgets要初始化，否则.length会报错。
     if (widgets.length == 0) {
       return true;
     }
@@ -33,18 +34,19 @@ class _TextNetworkPageState extends State<TestNetworkPage> {
         itemBuilder: (context, index) {
           return getRow(index);
         },
-        itemCount: widgets.length,
+        itemCount: 5,
       );
     }
   }
 
   loadData() async {
-    String dataURL = "https://m.topvdn.com/lmAppPlatform_v2.json";
+    String dataURL = "https://httpbin.org/ip";
     try {
       http.Response response = await http.get(dataURL);
       setState(() {
-        Utf8Decoder decode = Utf8Decoder();
-        widgets = json.decode(decode.convert(response.bodyBytes));
+        // Utf8Decoder decode = Utf8Decoder();
+        // widgets = json.decode(decode.convert(response.bodyBytes));
+        widgets = json.decode(response.body);
       });
     } catch (error) {
       print("请求出错 $error");
@@ -54,7 +56,7 @@ class _TextNetworkPageState extends State<TestNetworkPage> {
   Widget getRow(int i) {
     return Padding(
         padding: EdgeInsets.all(10.0),
-        child: Text('序号$i: ${widgets[i]['platformName']}'));
+        child: Text('序号$i: ${widgets['origin']}'));
   }
 
   @override
